@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use common\models\ProductRelation;
 use frontend\models\Wishlist;
 use Yii;
 use yii\behaviors\SluggableBehavior;
@@ -11,6 +10,8 @@ use yz\shoppingcart\CartPositionTrait;
 use yii\web\UploadedFile;
 use Imagine\Image\Box;
 use yii\helpers\ArrayHelper;
+use Imagine\Image\ManipulatorInterface;
+use Imagine\Image\Point;
 
 /**
  * This is the model class for table "product".
@@ -75,10 +76,9 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
     {
         return [
             [['description'], 'string'],
-            [['category_id', 'is_in_stock', 'is_active', 'is_novelty', 'new_price', 'count'], 'integer'],
+            [['category_id', 'is_in_stock', 'is_active', 'is_novelty', 'price', 'new_price', 'count'], 'integer'],
             ['weight', 'match', 'pattern' => '/^[0-9]+[0-9,.]*$/', 'message' => 'Значение должно быть числом.'],
             [['title', 'article', 'category_id', 'price'], 'required'],
-            [['price'], 'number'],
             [['time, size, color, tags, subcategories'], 'safe'],
             [['slug', 'article'], 'string', 'max' => 255],
             [['title'], 'string', 'max' => 40],
@@ -124,20 +124,49 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
                 $image->product_id = $this->id;
                 if ($image->save()) {
                     $file->saveAs($image->getPath());
-                    \yii\imagine\Image::getImagine()
-                        ->open($image->getPath())
-                        ->thumbnail(new Box(Yii::$app->params['productOriginalImageWidth'], Yii::$app->params['productOriginalImageHeight']))
-                        ->save($image->getPath('origin', ['quality' => 80]))
-                        ->thumbnail(new Box(Yii::$app->params['productMediumImageWidth'], Yii::$app->params['productMediumImageHeight']))
-                        ->save($image->getPath('medium', ['quality' => 80]))
-                        ->thumbnail(new Box(Yii::$app->params['productSmallImageWidth'], Yii::$app->params['productSmallImageHeight']))
-                        ->save($image->getPath('small', ['quality' => 80]));
+                    $this->prepareImage($image);
                 }
             }
             return true;
         } else {
             return false;
         }
+    }
+
+    private function prepareImage($image){
+        $wR = Yii::$app->params['productOriginalImageWidth'];
+        $hR = Yii::$app->params['productOriginalImageHeight'];
+        $i = \yii\imagine\Image::getImagine()
+            ->open($image->getPath())
+            ->thumbnail(new Box($wR, $hR), ManipulatorInterface::THUMBNAIL_OUTBOUND);
+        $size = $i->getSize();
+        $wC = $size->getWidth();
+        $hC = $size->getHeight();
+        // Current img < result img
+        if($wR > $wC && $hR > $hC){
+            if($hC > $wC && ($hC/$wC > $hR/$wR)){
+                $this->cropHeight($i, $wC, $hC, $wR, $hR);
+            } elseif ($hC <= $wC || $hC/$wC < $hR/$wR){
+                $this->cropWidth($i, $wC, $hC, $wR, $hR);
+            }
+        } elseif ($wR > $wC) {
+            $this->cropHeight($i, $wC, $hC, $wR, $hR);
+        } elseif ($hR > $hC){
+            $this->cropWidth($i, $wC, $hC, $wR, $hR);
+        }
+        $i->save($image->getPath('origin', ['quality' => 80]))
+            ->thumbnail(new Box(Yii::$app->params['productMediumImageWidth'], Yii::$app->params['productMediumImageHeight']))
+            ->save($image->getPath('medium', ['quality' => 80]))
+            ->thumbnail(new Box(Yii::$app->params['productSmallImageWidth'], Yii::$app->params['productSmallImageHeight']))
+            ->save($image->getPath('small', ['quality' => 80]));
+    }
+    private function cropWidth(&$i, $wC, $hC, $wR, $hR){
+        $wNew = $wR*$hC/$hR;
+        $i->crop(new Point(($wC-$wNew)/2, 0), new Box($wNew, $hC));
+    }
+    private function cropHeight(&$i, $wC, $hC, $wR, $hR){
+        $hNew = $wC*$hR/$wR;
+        $i->crop(new Point(0, ($hC - $hNew)/2), new Box($wC, $hNew));
     }
 
     /**

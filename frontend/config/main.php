@@ -26,14 +26,21 @@ return [
             'errorAction' => 'site/error',
         ],
         'cart' => [
-            'class' => 'yz\shoppingcart\ShoppingCart',
+            'class' => 'frontend\models\MyShoppingCart',
+        ],
+        'request' => [
+            'baseUrl' => '',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'catalog/<id:\d+>' => 'catalog/list',
-                'catalog/<categoryId:\d+>/<productId:\d+>' => 'catalog/product',
+                'catalog/sale' => 'catalog/sale',
+                'catalog/<categorySlug:\w+>' => 'catalog/list',
+                'catalog/<categorySlug:\w+>/<productId:\d+>' => 'catalog/product',
+                'cart' => 'cart/cart',
+                'order' => 'cart/order',
+                'contact' => 'site/contact',
             ],
         ],
     ],

@@ -10,4 +10,6 @@ return [
     'productMediumImageHeight'=> 960,
     'productSmallImageWidth'=> 140,
     'productSmallImageHeight'=> 249,
+
+    'catalogPageSize'=> 12,
 ];
