@@ -18,7 +18,7 @@ class CartController extends \yii\web\Controller
         }
     }
 
-    public function actionList()
+    public function actionCart()
     {
         /* @var $cart ShoppingCart */
         $cart = \Yii::$app->cart;
@@ -37,7 +37,7 @@ class CartController extends \yii\web\Controller
         $product = Product::findOne($id);
         if ($product) {
             \Yii::$app->cart->remove($product);
-            $this->redirect(['cart/list']);
+            $this->redirect(['cart']);
         }
     }
 
@@ -46,7 +46,7 @@ class CartController extends \yii\web\Controller
         $product = Product::findOne($id);
         if ($product) {
             \Yii::$app->cart->update($product, $quantity);
-            $this->redirect(['cart/list']);
+            $this->redirect(['cart']);
         }
     }
 
@@ -75,7 +75,7 @@ class CartController extends \yii\web\Controller
                 if (!$orderItem->save(false)) {
                     $transaction->rollBack();
                     \Yii::$app->session->addFlash('error', 'Cannot place your order. Please contact us.');
-                    return $this->redirect('catalog/list');
+                    return $this->redirect('catalog');
                 }
             }
 
@@ -85,7 +85,7 @@ class CartController extends \yii\web\Controller
             \Yii::$app->session->addFlash('success', 'Thanks for your order. We\'ll contact you soon.');
             $order->sendEmail();
 
-            return $this->redirect('catalog/list');
+            return $this->redirect('catalog');
         }
 
         return $this->render('order', [

@@ -20,81 +20,104 @@ class CatalogController extends \yii\web\Controller
         }
     }
 
-    public function actionList($categorySlug = null)
-    {
-        /** @var Category $category */
-        $category = null;
+    public function actionList($categoryId) {
 
-        $categories = Category::find()->where(['is_active' => 1])->indexBy('id')->orderBy('id')->all();
+        $categories = Category::find()->indexBy('id')->orderBy('id')->all();
 
         $productsQuery = Product::find()->where(['is_active' => 1]);
+        return $this->listCatalog($categoryId, $categories, $productsQuery);
+    }
 
+    public function actionSale($categorySlug){
+        $categories = Category::find()->indexBy('id')->orderBy('id')->all();
+
+        $productsQuery = Product::find()->where(['is_active' => 1])->andWhere(['not', ['new_price' => null]]);
+        return $this->listCatalog($categorySlug, $categories, $productsQuery);
+    }
+
+    public function listCatalog($categorySlug, $categories, $productsQuery){
+        /** @var Category $category */
+        $category = null;
         $get = Yii::$app->request->get();
-        $this->prepareFilter($productsQuery);
+        if (!empty($get) && isset($get['urlParams'])){
+            $this->redirect($get['urlParams']);
+        }
 
+        $this->prepareFilter($productsQuery);
         if ($categorySlug !== null) {
             $category = Category::find()->where(['slug' => $categorySlug])->one();
         }
         if ($category) {
-            $productsQuery->andWhere(['category_id' => $this->getCategoryIds($categories, $category->id)]);
+            if(!$category->parent)
+                $productsQuery->andWhere(['category_id' => $this->getCategoryIds($categories, $category->id)]);
+            else {
+                $productsQuery->andWhere(['REGEXP', 'subcategories','^'.$category->id.'$|^'.$category->id.',.+|^.+,'.$category->id.'$|^.+,'.$category->id.',']);
+            }
         }
-//        elseif($categorySlug == 'novelty'){
-//            $productsQuery->andWhere(['is_novelty' => 1]);
-//        }
         $productsDataProvider = new ActiveDataProvider([
             'query' => $productsQuery,
             'pagination' => [
-                'pageSize' => isset($get['limit'])? $get['limit']: Yii::$app->params['catalogPageSize'],
+                'pageSize' => Yii::$app->params['catalogPageSize'],
             ],
         ]);
         return $this->render('list', [
-            'productsDataProvider' => $productsDataProvider,
             'category' => isset($category)? $category : null,
-            'menuItems' => $this->getMenuItems($categories, isset($category->id) ? $category->id : null),
-            'menuItems' => $this->getMenuItems($categories, isset($category->id) ? $category->id : 'novelty'),
+            'menuItems' => Category::getMenuItems($category->id),
             'models' => $productsDataProvider->getModels(),
             'pagination' => $productsDataProvider->getPagination(),
             'pageCount' => $productsDataProvider->getCount(),
+            'noveltyProducts' => Product::getNovelties(),
         ]);
     }
 
     private function prepareFilter(&$query){
-//        if($get = Yii::$app->request->get()){
-//            if(isset($get['color']) && $get['color'] != 'all'){
-//                $query->andFilterWhere(['like', 'color', $get['color']]);
-//            }
-//            if(isset($get['size']) && $get['size'] != 'all'){
-//                $query->andFilterWhere(['like', 'sizes', $get['size']]);
-//            }
-//            if(isset($get['price']) && $get['price'] != 'all'){
-//                $priceArr = explode(',', $get['price']);
-//                $query->andWhere(['between', 'price', $priceArr[0], $priceArr[1]]);
-//            }
-//            if(isset($get['order'])){
-//                if($get['order'] == 'popular') {
-//                    $query->orderBy('sort DESC, id DESC');
-//                } elseif ($get['order'] == 'novelty') {
-//                    $query->orderBy('is_novelty');
-//                } elseif ($get['order'] == 'price'){
-//                    $query->orderBy('price DESC');
-//                }
-//            } else {
-//                $query->orderBy('sort DESC');
-//            }
-//        } else {
-//            $query->orderBy('sort DESC');
-//        }
+        if($get = Yii::$app->request->get()){
+            if(isset($get['color']) && $get['color'] != 'all'){
+                $query->andWhere(['color' => $get['color']]);
+            }
+            if(isset($get['size']) && $get['size'] != 'all'){
+                $query->joinWith('sizes')
+                    ->andWhere(['{{product_size}}.size' => $get['size']])
+                    ->andWhere(['>', '{{product_size}}.count', 0]);
+            }
+            if(isset($get['min_price']) && isset($get['max_price'])){
+                $query->andWhere(['between', 'price', $get['min_price'], $get['max_price']]);
+            }
+            if(isset($get['order'])){
+                if ($get['order'] == 'price_lh'){
+                    $query->select(['*', '(CASE WHEN new_price > 0 THEN new_price ELSE price END) as price_common']);
+                    $query->orderBy('price_common ASC');
+                } elseif ($get['order'] == 'price_hl'){
+                    $query->select(['*', '(CASE WHEN new_price > 0 THEN new_price ELSE price END) as price_common']);
+                    $query->orderBy('price_common DESC');
+                } elseif ($get['order'] == 'sale'){
+                    $query->select(['*', '(CASE WHEN new_price > 0 THEN (price/new_price) ELSE 0 END) as sale']);
+                    $query->orderBy('is_in_stock DESC, sale DESC');
+                } else {
+                    $query->orderBy('is_in_stock DESC, id DESC');
+                }
+            } else {
+                $query->orderBy('is_in_stock DESC, id DESC');
+            }
+        } else {
+            $query->orderBy('is_in_stock DESC, id DESC');
+        }
     }
 
     public function actionProduct($categoryId, $productId)
     {
-        $category = Category::find()->where(['id' => $categoryId])->one();
         $product = Product::find()->where(['id' => $productId])->one();
 
-        return $this->render('product', [
-            'category' => $category,
-            'product' => $product,
-        ]);
+        if($product && $product->is_active){
+            $category = Category::find()->where(['slug' => $categoryId])->one();
+
+            return $this->render('product', [
+                'category' => $category,
+                'product' => $product,
+            ]);
+        } else {
+            return $this->redirect('/catalog/list');
+        }
     }
 
     public function actionView()

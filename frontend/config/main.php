@@ -35,9 +35,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'catalog/sale' => 'catalog/sale',
-                'catalog/<categorySlug:\w+>' => 'catalog/list',
-                'catalog/<categorySlug:\w+>/<productId:\d+>' => 'catalog/product',
+                'catalog' => 'catalog/list',
+                'catalog/<categoryId>' => 'catalog/list',
+                'catalog/<categoryId>/<productId:\d+>' => 'catalog/product',
                 'cart' => 'cart/cart',
                 'order' => 'cart/order',
                 'contact' => 'site/contact',

@@ -2,25 +2,27 @@
 use yii\helpers\Html;
 use yii\helpers\Markdown;
 ?>
-<?php /** @var $model \common\models\Product */ ?>
-<div class="col-xs-12 well">
-    <div class="col-xs-2">
-        <?php
-        $images = $model->images;
-        if (isset($images[0])) {
-            echo Html::img($images[0]->getUrl(), ['width' => '100%']);
-        }
-        ?>
-    </div>
-    <div class="col-xs-6">
-        <h2><?= Html::encode($model->title) ?></h2>
-        <?= Markdown::process($model->description) ?>
-    </div>
 
-    <div class="col-xs-4 price">
-        <div class="row">
-            <div class="col-xs-12">$<?= $model->price ?></div>
-            <div class="col-xs-12"><?= Html::a('Add to cart', ['cart/add', 'id' => $model->id], ['class' => 'btn btn-success'])?></div>
+<div class="col-sm-6 col-md-6 col-lg-4">
+    <div class="shop-item -center">
+        <a href="/catalog/<?= $model->category->slug ?>/<?= $model->id ?>" class="shop-img">
+            <?php
+            $images = $model->images;
+            if (isset($images[0])) {
+                echo Html::img($images[0]->getUrl(), ['width' => '100%']);
+            }
+            ?>
+        </a>
+        <h5 class="shop-title"><?= Html::encode($model->title) ?></h5>
+        <p class="shop-descr"><?= $model->category->title ?></p>
+        <div class="shop-content_bot clearfix">
+            <div class="shop-price"><?= $model->price ?><span><i class="fa fa-ruble"></i></span></div>
+            <div class="shop-overlay">
+                <ul class="shop-info_list">
+                    <li><?= Html::a('<i class="fa fa-shopping-cart" aria-hidden="true"></i>', ['cart/add', 'id' => $model->id])?></li>
+                    <li><a href="/catalog/<?= $model->category->slug ?>/<?= $model->id ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

@@ -78,10 +78,9 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
             [['description'], 'string'],
             [['category_id', 'is_in_stock', 'is_active', 'is_novelty', 'price', 'new_price', 'count'], 'integer'],
             ['weight', 'match', 'pattern' => '/^[0-9]+[0-9,.]*$/', 'message' => 'Значение должно быть числом.'],
-            [['title', 'article', 'category_id', 'price'], 'required'],
+            [['title', 'article', 'price'], 'required'],
             [['time, size, color, tags, subcategories'], 'safe'],
             [['slug', 'article'], 'string', 'max' => 255],
-            [['title'], 'string', 'max' => 40],
             [['article'], 'unique'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -239,7 +238,8 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
     public function getIsInStock()
     {
         $product = Product::findOne($this->id);
-        if($product->is_in_stock && $product->count > 0)
+//        if($product->is_in_stock && $product->count > 0)
+        if($product->is_in_stock)
             return true;
         else
             return false;
@@ -413,11 +413,11 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
         }
     }
 
-    public static function getNovelties(){
+    public static function getNovelties($count = 3){
         $noveltyProducts = Product::find()
-            ->where(['is_active' => 1, 'is_in_stock' => 1, 'is_novelty' => 1])
-            ->andWhere(['>', 'count', '0'])
-            ->limit(Yii::$app->params['productNewCount'])
+            ->where(['is_active' => 1, 'is_in_stock' => 1])
+//            ->andWhere(['>', 'count', '0'])
+            ->limit($count)
             ->all();
         return $noveltyProducts;
     }
@@ -442,18 +442,18 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
         return ArrayHelper::map($model, 'id', 'description');
     }
 
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            $this->weight = str_replace(',', '.', $this->weight);
-            if($this->count > 0)
-                $this->is_in_stock = 1;
-            else
-                $this->is_in_stock = 0;
-            return true;
-        }
-        return false;
-    }
+//    public function beforeSave($insert)
+//    {
+//        if (parent::beforeSave($insert)) {
+//            $this->weight = str_replace(',', '.', $this->weight);
+//            if($this->count > 0)
+//                $this->is_in_stock = 1;
+//            else
+//                $this->is_in_stock = 0;
+//            return true;
+//        }
+//        return false;
+//    }
 
     public function getSubcategory()
     {

@@ -18,9 +18,18 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/all.css?3',
     ];
     public $js = [
+        'js/jquery.min.js',
+        'js/moment-with-locales.min.js',
+        'js/bootstrap-select.min.js',
+        'js/shuffle.min.js',
+        'js/bootstrap.min.js',
+        'js/bootstrap-datetimepicker.min.js',
+        'js/slick.min.js',
+        'js/jquery-ui.min.js',
+        'js/all.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

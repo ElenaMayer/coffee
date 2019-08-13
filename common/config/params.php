@@ -11,5 +11,5 @@ return [
     'productSmallImageWidth'=> 140,
     'productSmallImageHeight'=> 249,
 
-    'catalogPageSize'=> 12,
+    'catalogPageSize'=> 2,
 ];

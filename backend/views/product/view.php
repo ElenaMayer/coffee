@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Уверена? Я бы не стала этого делать :)',
+                'confirm' => 'Удалить? :)',
                 'method' => 'post',
             ],
         ]) ?>
@@ -46,23 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     return empty($model->category_id) ? '-' : $model->category->title;
                 },
             ],
-            [
-                'attribute' => 'subcategories',
-                'value' => function ($model) {
-                    $subcatArr = [];
-                    foreach (explode(",",$model->subcategories) as $category_id){
-                        $category = Category::findOne($category_id);
-                        if($category)
-                            $subcatArr[] = $category->title;
-                    }
-                    return implode(",", $subcatArr);
-                },
-            ],
             'article',
             'title',
             'description:ntext',
             'price',
-            'new_price',
             [
                 'attribute' => 'is_active',
                 'value' => function ($model) {
@@ -75,17 +62,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->is_in_stock ? 'Да' : 'Нет';
                 },
             ],
-            [
-                'attribute' => 'is_novelty',
-                'value' => function ($model) {
-                    return $model->is_novelty ? 'Да' : 'Нет';
-                },
-            ],
-            'size',
-            'color',
-            'tags',
-            'count',
-            'weight',
             'time'
         ],
     ]) ?>
