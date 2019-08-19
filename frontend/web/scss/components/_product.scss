@@ -58,7 +58,7 @@
 	&-more{
 		font-family: 'Lato', sans-serif;
 		font-weight: 900;
-		margin-bottom: 25px;
+		padding-top: 40px;
 		display: block;
 	}
 	&-descr_title{
@@ -113,7 +113,7 @@
 			font-size: 18px;
 			line-height: 37px;
 			font-family: 'Lato', sans-serif;
-			margin-bottom: 60px;
+			margin-bottom: 30px;
 		}
 		&_tabs{
 			margin-top: 50px;
@@ -180,6 +180,16 @@
 	&-info_title{
 		font-weight: 900;
 		font-size: 19px;
+	}
+	&-status {
+		font-size: 16px;
+		padding-bottom: 40px;
+		& .red {
+			color: red;
+		}
+		& .green {
+			color: green;
+		}
 	}
 }
 @media screen and (max-width: 1400px){

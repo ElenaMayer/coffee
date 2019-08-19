@@ -24,10 +24,9 @@ AppAsset::register($this);
 
     <meta charset="<?= Yii::$app->charset ?>"/>
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title . ' - ' . Yii::$app->name ) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
     <?php $this->beginBody() ?>
     <header class="header -scroll_white">
         <nav class="navbar navbar-default">
@@ -115,8 +114,8 @@ AppAsset::register($this);
 
         <footer class="footer -sticky">
             <div class="footer-copyright text-center">
-                Copyright &copy; <?= date('Y') ?> <?= Yii::$app->params['domain'] ?><br/>
-                Developed with <i class="fa fa-heart-o"></i> by <a href="<?= Yii::$app->params['developerSite'] ?>" rel="external"><?= Yii::$app->params['developer'] ?></a>.
+                <p>Copyright &copy; <?= date('Y') ?> <?= Yii::$app->params['domain'] ?></p>
+                <p>Developed with <i class="fa fa-heart-o"></i> by <a href="<?= Yii::$app->params['developerSite'] ?>" rel="external"><?= Yii::$app->params['developer'] ?></a></p>
             </div>
         </footer>
     </div>
@@ -126,6 +125,5 @@ AppAsset::register($this);
     </div>
     <?= $this->render('_metrika'); ?>
     <?php $this->endBody() ?>
-</body>
 </html>
 <?php $this->endPage() ?>

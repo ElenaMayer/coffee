@@ -9,12 +9,17 @@ use yz\shoppingcart\ShoppingCart;
 
 class CartController extends \yii\web\Controller
 {
-    public function actionAdd($id)
+
+    public function actionAdd($id, $quantity = 1)
     {
         $product = Product::findOne($id);
         if ($product) {
-            \Yii::$app->cart->put($product);
-            return $this->goBack();
+            $cart = \Yii::$app->cart;
+            $cart->put($product, $quantity);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return [
+                'count' => $cart->getCount(),
+            ];
         }
     }
 
@@ -34,11 +39,14 @@ class CartController extends \yii\web\Controller
 
     public function actionRemove($id)
     {
-        $product = Product::findOne($id);
-        if ($product) {
-            \Yii::$app->cart->remove($product);
-            $this->redirect(['cart']);
-        }
+        \Yii::$app->cart->removeById($id);
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $cart = \Yii::$app->cart;
+        return [
+            'cartCount' => $cart->getCount(),
+            'cartTotal' => $cart->getCost(),
+        ];
+
     }
 
     public function actionUpdate($id, $quantity)
@@ -48,6 +56,42 @@ class CartController extends \yii\web\Controller
             \Yii::$app->cart->update($product, $quantity);
             $this->redirect(['cart']);
         }
+    }
+
+    public function actionUpdate_cart_qty()
+    {
+        $get = $_GET;
+        if($get && isset($get['id']) && isset($get['type'])) {
+            $cart = \Yii::$app->cart;
+//                if($product->getItemCount($position->diversity_id) > $get['quantity']){
+//                    $count = $get['quantity'];
+//                } else {
+//                    $count = $product->getItemCount($position->diversity_id);
+//                }
+            $position = $cart->getPositionById($get['id']);
+            if ($position) {
+                $quantity = $position->getQuantity();
+
+                if($get['type'] == 'plus'){
+                    $quantity++;
+                } else {
+                    $quantity--;
+                }
+                $cart->update($position, $quantity);
+            }
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            return [
+                'id' => $get['id'],
+                'count' => $quantity,
+                'productTotal' => $position->getCost(),
+                'cartTotal' => $cart->getCost(),
+                'cartCount' => $cart->getCount(),
+            ];
+        } else {
+            return false;
+        }
+
     }
 
     public function actionOrder()
@@ -74,18 +118,18 @@ class CartController extends \yii\web\Controller
                 $orderItem->quantity = $product->getQuantity();
                 if (!$orderItem->save(false)) {
                     $transaction->rollBack();
-                    \Yii::$app->session->addFlash('error', 'Cannot place your order. Please contact us.');
-                    return $this->redirect('catalog');
+                    \Yii::$app->session->addFlash('error', 'Невозможно создать заказ. Пожалуйста свяжитесь с нами.');
+                    return $this->redirect('/catalog/coffee');
                 }
             }
 
             $transaction->commit();
             \Yii::$app->cart->removeAll();
 
-            \Yii::$app->session->addFlash('success', 'Thanks for your order. We\'ll contact you soon.');
+            \Yii::$app->session->addFlash('success', 'Спасибо за заказ. Мы свяжемся с Вами в ближайшее время.');
             $order->sendEmail();
 
-            return $this->redirect('catalog');
+            return $this->redirect('/catalog/coffee');
         }
 
         return $this->render('order', [

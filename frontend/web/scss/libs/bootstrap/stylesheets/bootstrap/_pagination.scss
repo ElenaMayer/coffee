@@ -36,6 +36,10 @@
     }
   }
 
+  > li.disabled {
+    display: none;
+  }
+
   > li > a,
   > li > span {
     &:hover,

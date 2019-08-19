@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h5 class="checkout-title">Детали заказа</h5>
                         <div class="checkout-form">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <?= $form->field($order, 'fio') ?>
                                 </div>
                                 <div class="col-md-6">
@@ -33,11 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="col-md-6">
                                     <?= $form->field($order, 'phone') ?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <?= $form->field($order, 'address') ?>
                                 </div>
                             </div>
-                            <h5 class="checkout-title">КОММЕНТАРИЙ</h5>
                             <?= $form->field($order, 'notes')->textarea() ?>
                         </div>
                     </div>
@@ -53,18 +52,22 @@ $this->params['breadcrumbs'][] = $this->title;
                             </thead>
                             <tbody>
                             <?php foreach ($products as $product):?>
-                                <tr>
-                                    <td style="width: 45%;" >
-                                        <div class="checkout-table_product">
-                                            <span class="checkout-table_product-title"><?= Html::encode($product->title) ?></span>
-                                            <span class="checkout-table_product-subtitle"><?= $product->category->title?></span>
-                                        </div>
-                                    </td>
-                                    <td style="width: 35%;"><?= $quantity = $product->getQuantity()?></td>
-                                    <td style="width: 20%;" class="text-center">
-                                        <span class="checkout-table_price"><?= $product->getCost() ?><span><i class="fa fa-ruble"></i></span>
-                                    </td>
-                                </tr>
+                                <?php if($product->getIsInStock() && $product->getIsActive()):?>
+                                    <tr>
+                                        <td style="width: 45%;" >
+                                            <div class="checkout-table_product">
+                                                <a href="/catalog/<?= $product->category->slug ?>/<?= $product->id ?>">
+                                                    <span class="checkout-table_product-title"><?= Html::encode($product->title) ?></span>
+                                                </a>
+                                                <span class="checkout-table_product-subtitle">Арт. <?= $product->article?></span>
+                                            </div>
+                                        </td>
+                                        <td style="width: 35%;"><?= $quantity = $product->getQuantity()?></td>
+                                        <td style="width: 20%;" class="text-center">
+                                            <span class="checkout-table_price"><?= $product->getCost() ?><span><i class="fa fa-ruble"></i></span>
+                                        </td>
+                                    </tr>
+                                <?php endif;?>
                             <?php endforeach ?>
                             </tbody>
                         </table>

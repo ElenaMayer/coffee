@@ -413,12 +413,14 @@ class Product extends \yii\db\ActiveRecord implements CartPositionInterface
         }
     }
 
-    public static function getNovelties($count = 3){
+    public static function getNovelties($count = 3, $currentId = null){
         $noveltyProducts = Product::find()
-            ->where(['is_active' => 1, 'is_in_stock' => 1])
+            ->where(['is_active' => 1, 'is_in_stock' => 1]);
+        if($currentId){
+            $noveltyProducts->andWhere(['!=', 'id', $currentId]);
+        }
 //            ->andWhere(['>', 'count', '0'])
-            ->limit($count)
-            ->all();
+        $noveltyProducts = $noveltyProducts->limit($count)->all();
         return $noveltyProducts;
     }
 

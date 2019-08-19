@@ -117,6 +117,22 @@
 @import 'components/preview';
 
 /*------------------------------------------------------------------
+	Styles for Home page 6
+-------------------------------------------------------------------*/
+
+@import 'home_6_styles/variables';
+@import 'home_6_styles/components/typography';
+@import 'home_6_styles/components/buttons';
+@import 'home_6_styles/components/custom-grid';
+@import 'home_6_styles/components/header';
+@import 'home_6_styles/components/global';
+@import 'home_6_styles/components/slick-arrows';
+@import 'home_6_styles/components/slick-dots';
+@import 'home_6_styles/components/forms';
+@import 'home_6_styles/components/slick-lightbox-styles';
+@import 'home_6_styles/home_6';
+
+/*------------------------------------------------------------------
 	Styles for Home page 5
 -------------------------------------------------------------------*/
 
@@ -129,6 +145,14 @@
 @import 'home_5_styles/components/slick-arrows';
 @import 'home_5_styles/components/scrollbar_styles';
 @import 'home_5_styles/home_5';
+
+/*------------------------------------------------------------------
+	Styles for Home page 7
+-------------------------------------------------------------------*/
+
+@import 'home_7_styles/components/typography';
+@import 'home_7_styles/components/global';
+@import 'home_7_styles/home_7';
 
 
 

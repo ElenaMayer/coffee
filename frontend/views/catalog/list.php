@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="shop-filter_block -white -mob50">
                         <div class="shop-filter_title">Категории</div>
                         <div class="filter-list">
-                            <?php foreach (Category::find()->all() as $category):?>
-                                <a href="/catalog/<?=$category->slug?>" class="filter-list_main_link" data-toggle="collapse"><?=$category->title?> (<?= count($category->products) ?>) <i class="fa fa-angle-right"></i></a>
+                            <?php foreach (Category::find()->all() as $cat):?>
+                                <a href="/catalog/<?=$cat->slug?>" class="filter-list_main_link <?php if($cat->id == $category->id):?>active<?php endif;?>" data-toggle="collapse"><?=$cat->title?> (<?= count($cat->products) ?>) <i class="fa fa-angle-right"></i></a>
                             <?php endforeach;?>
                         </div>
                     </div>
@@ -40,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <select name="orderby" class="selectpicker" id="p_sort_by" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                                 <option value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'popular') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'popular'):?>selected="selected"<?php endif;?>>По популярности</option>
-                                <option data-icon="fa fa-sort-amount-desc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'price_asc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'price_asc'):?>selected="selected"<?php endif;?>>По цене</option>
-                                <option data-icon="fa fa-sort-amount-asc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'price_desc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'price_desc'):?>selected="selected"<?php endif;?>>По цене</option>
+                                <option data-icon="fa fa-sort-amount-asc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'price_asc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'price_asc'):?>selected="selected"<?php endif;?>>По цене</option>
+                                <option data-icon="fa fa-sort-amount-desc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'price_desc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'price_desc'):?>selected="selected"<?php endif;?>>По цене</option>
                                 <option data-icon="fa fa-sort-alpha-asc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'title_asc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'title_asc'):?>selected="selected"<?php endif;?>>По названию</option>
                                 <option data-icon="fa fa-sort-alpha-desc" value="<?= StaticFunction::addGetParamToCurrentUrl('order', 'title_desc') ?>" <?php if(!Yii::$app->request->get('order') || Yii::$app->request->get('order') == 'title_desc'):?>selected="selected"<?php endif;?>>По названию</option>
                             </select>

@@ -14,7 +14,7 @@
 				margin: 0 -20px;
 			}
 			& [class*=' col-']{
-				padding: 0 20px;
+				padding: 0 10px;
 				padding-bottom: 40px;
 			}
 			&.-center{
@@ -48,7 +48,7 @@
 					font-weight: 400;
 				}
 			}
-			&:hover{
+			&.active:hover{
 				& .shop{
 					&-overlay{
 						// top: 0;
@@ -78,10 +78,11 @@
 		}
 	}
 	&-title{
-		font-family: Cabin;
+		font-family: "Cabin", sans-serif;
 		font-weight: 700;
 		text-align: left;
 		margin-bottom: 5px;
+		font-size: 20px;
 	}
 	&-descr{
 		font-size: 17px;
@@ -99,7 +100,6 @@
 		top: 0;
 		position: relative;
 		float: left;
-		font-family: 'Lato';
 		transition: all .5s;
 	}
 	&-buy{
@@ -113,7 +113,6 @@
 			}
 		}
 		& span{
-			font-family: 'Lato';
 			font-weight: 900;
 			font-size: 16px;
 			text-transform: uppercase;
@@ -163,6 +162,16 @@
 				font-size: 18px;
 			}
 		}
+
+		& button {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			border: 1px solid #dedede;
+			background: transparent;
+			color: $brand-primary;
+		}
 	}
 	& .slick-track{
 		padding: 15px 0;
@@ -192,7 +201,6 @@
 .shop-filter{
 	&_title{
 		font-size: 22px;
-		font-family: Lato;
 		font-weight: 900;
 		text-transform: uppercase;
 		margin-bottom: 40px;
@@ -205,7 +213,6 @@
 			box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.11);
 			color: #000;
 			padding-right: 45px;
-			font-family: Lato;
 			font-size: 18px;
 			&:focus{	
 				box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5) !important;
@@ -260,7 +267,6 @@
 	&-review{
 		margin-bottom: 40px;
 		&_title{
-			font-family: Lato;
 			font-size: 18px;
 			margin-bottom: 10px;
 		}
@@ -274,12 +280,13 @@
 	&_info{
 		float: left;
 		padding: 6px 0;
-		font-family: Lato;
+		font-size: 18px;
 	}
 	&_sort{
 		float: right;
-		font-family: Lato;
 		min-width: 300px;
+		font-size: 18px;
+		width: 60%;
 		&-title{
 		    display: inline-block;
 			vertical-align: middle;
@@ -325,12 +332,10 @@
 		}
 		&-title{
 			font-size: 18px;
-			font-family: Lato;
 			display: inline-block;
 		}
 		&-amount{
 			display: inline-block;
-			font-family: Lato;
 			font-size: 18px;
 			background: transparent;
 			border: none;

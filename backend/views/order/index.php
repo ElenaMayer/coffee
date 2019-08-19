@@ -37,14 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => Order::getStatuses()
             ],
-            [
-                'attribute'=>'shipping_method',
-                'value' => function ($model) {
-                    if($model->shipping_method == 'tk') return Order::getTkList()[$model->tk] . ' - ' . $model->city;
-                    elseif ($model->shipping_method == 'self') return 'Самовывоз';
-                    else return Order::getShippingMethods()[$model->shipping_method];
-                },
-            ],
+//            [
+//                'attribute'=>'shipping_method',
+//                'value' => function ($model) {
+//                    if($model->shipping_method == 'tk') return Order::getTkList()[$model->tk] . ' - ' . $model->city;
+//                    elseif ($model->shipping_method == 'self') return 'Самовывоз';
+//                    else return Order::getShippingMethods()[$model->shipping_method];
+//                },
+//            ],
             [
                 'header'=>'Сумма',
                 'value' => function ($model) {

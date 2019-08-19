@@ -4,7 +4,8 @@
 }
 .checkout{
 	&-title{
-		font-family: 'gilroyextrabold';
+		font-family: "Cabin", sans-serif;
+		font-weight: 800;
 		text-transform: uppercase;
 		font-weight: 700;
 		margin-bottom: 35px;
@@ -17,8 +18,10 @@
 		& .col-md-6{
 			padding: 0px 20px;
 		}
+		& .col-md-12{
+			 padding: 0px 20px;
+		 }
 		& label{
-			font-family: "Lato";
 			font-size: 18px;
 			color: #383838;
 			margin-bottom: 10px;
@@ -30,7 +33,6 @@
 			background-color: #f1f1f1;
 			border: none;
 			box-shadow: none;
-			font-family: "Lato";
 			font-size: 18px;
 			color: #000;
 			height: 50px;
@@ -71,7 +73,8 @@
 			}
 		}
 		& th {
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 			font-size: 18px;
 			text-transform: uppercase;
 		}
@@ -83,7 +86,6 @@
 		&_product{
 			&-title{
 				font-size: 17px;
-				font-family: 'Lato';
 				font-weight: 700;
 				text-transform: uppercase;
 				color: #000;
@@ -92,14 +94,12 @@
 			}
 			&-subtitle{
 				font-size: 17px;
-				font-family: 'Lato';
 				color: #010101;
 				display: block;
 			}
 		}
 		&_price{
 			font-size: 18px;
-			font-family: 'Lato';
 			display: block;
 			text-transform: uppercase;
 			font-weight: 700;
@@ -110,7 +110,8 @@
 		margin-top: 30px;
 		margin-bottom: 65px;
 		&_title{
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 			float: left;
 			text-transform: uppercase;
 		}
@@ -118,7 +119,8 @@
 			text-transform: uppercase;
 			float: right;
 			font-size: 22px;
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 		}
 	}
 }
@@ -148,7 +150,6 @@
 				}
 				&-subtitle{
 					font-size: 15px;
-					font-family: 'Lato';
 					color: #010101;
 					display: block;
 				}

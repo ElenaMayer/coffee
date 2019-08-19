@@ -5,6 +5,11 @@ $( window ).load(function() {
     $('body').on('click' , function(){
         $(".preloader").fadeOut('slow');
     });
+
+    if($(window).scrollTop() >= 50){
+        $('.header.-scroll_white').addClass('-active');
+        $('.scroll_top').fadeIn();
+    }
 });
 
 
@@ -880,4 +885,94 @@ $( window ).on( "load", function() {
             
         });
     }
-})
+});
+
+$(document.body).on('click', '.add-to-cart', function (event) {
+    button = $(this);
+    quantity = $('.product-qty').val();
+    if (!quantity) {
+        quantity = 1;
+    }
+    $.ajax({
+        method: 'get',
+        url: '/cart/add',
+        dataType: 'json',
+        data: {
+            id: button.data('id'),
+            diversity_id: button.data('diversity_id'),
+            quantity: quantity,
+        },
+    }).done(function (data) {
+        add_to_cart_animation(button, data.count);
+    });
+});
+
+function add_to_cart_animation(button, count){
+    button.addClass('is-added').find('path').eq(0).animate({
+        //draw the check icon
+        'stroke-dashoffset':0
+    }, 300, function(){
+        setTimeout(function(){
+            $('.cart-products').text(count);
+            button.removeClass('is-added').find('em').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                //wait for the end of the transition to reset the check icon
+                button.find('path').eq(0).css('stroke-dashoffset', '19.79');
+                animating =  false;
+            });
+
+            if( $('.no-csstransitions').length > 0 ) {
+                // check if browser doesn't support css transitions
+                addToCartBtn.find('path').eq(0).css('stroke-dashoffset', '19.79');
+                animating =  false;
+            }
+        }, 600);
+    });
+}
+
+$(document.body).on('click', '#cart-qty-plus' ,function(){
+    updateCartQty($(this), 'plus');
+});
+
+$(document.body).on('click', '#cart-qty-minus' ,function(){
+    updateCartQty($(this), 'minus');
+});
+
+$(document.body).on('click', '#remove_cart_item' ,function(){
+    e = $(this).parents('.cart-table_descr');
+    $.ajax({
+        method: 'get',
+        url: '/cart/remove',
+        dataType: 'json',
+        data: {
+            id: $(this).data('id'),
+        },
+    }).done(function( data ) {
+        e.hide('slow');
+        $(".cart-products").html(data.cartCount);
+        $(".cart-total_price span").html(data.cartTotal);
+    });
+});
+
+function updateCartQty(e, type) {
+    if(!e.hasClass("disabled")) {
+        $.ajax({
+            method: 'get',
+            url: '/cart/update_cart_qty',
+            dataType: 'json',
+            data: {
+                id: e.data('id'),
+                type: type
+            },
+        }).done(function (data) {
+            $(".cart-products").html(data.cartCount);
+            $(".cart-total_price span").html(data.cartTotal);
+            e.parent('div').children('span').html(data.count);
+            e.parents('.cart-table_descr').find('.cart-product_total-price span').html(data.productTotal);
+            if(data.count > 1){
+                e.parent().children('#cart-qty-minus').removeClass("disabled");
+            } else {
+                e.parent().children('#cart-qty-minus').addClass("disabled");
+            }
+        });
+    }
+}

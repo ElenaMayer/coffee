@@ -43,24 +43,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'fio',
             'phone',
             'email:email',
-            [
-                'attribute' => 'shipping_method',
-                'value' => function ($model) {
-                    return Order::getShippingMethods()[$model->shipping_method];
-                },
-            ],
-            [
-                'attribute' => 'payment_method',
-                'value' => function ($model) {
-                    return Order::getPaymentMethods()[$model->payment_method];
-                },
-            ],
-            [
-                'attribute'=>'payment',
-                'value' => function ($model) {
-                    return $model->payment ? 'Есть' : 'Нет';
-                },
-            ],
+//            [
+//                'attribute' => 'shipping_method',
+//                'value' => function ($model) {
+//                    return Order::getShippingMethods()[$model->shipping_method];
+//                },
+//            ],
+//            [
+//                'attribute' => 'payment_method',
+//                'value' => function ($model) {
+//                    return Order::getPaymentMethods()[$model->payment_method];
+//                },
+//            ],
+//            [
+//                'attribute'=>'payment',
+//                'value' => function ($model) {
+//                    return $model->payment ? 'Есть' : 'Нет';
+//                },
+//            ],
             'notes:ntext',
             'created_at:datetime',
             'updated_at:datetime',
@@ -125,11 +125,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </td>
             </tr>
         <?php endforeach ?>
-        <tr>
-            <td>
-                <p><string>Вес: </string> <?= $model->getWeight()?> кг</p>
-            </td>
-        </tr>
         <tr>
             <td>
                 <p><string>Итого: </string> <?= $model->getSubCost()?> руб.</p>

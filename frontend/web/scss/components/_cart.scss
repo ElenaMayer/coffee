@@ -37,26 +37,27 @@
 		display: inline-block;
 		padding-left: 10%;
 		&_title{
-			font-family: Cabin;
+			font-family: "Cabin", sans-serif;
 			font-weight: 700;
 			margin-bottom: 5px;
+			color: #010101;
 		}
 		&_subtitle{
 			font-size: 18px;
 			color: #7f7f7f;
-			font-family: Lato;
 		}
 	}
 	&-price{
-		font-family: Lato;
 		color: #010101;
 		&.-strong{
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 			color: #000;
 		}
 	}
 	&-close{
 		color: #000;
+		cursor: pointer;
 		&:hover{
 			color: $brand-primary;
 		}
@@ -74,7 +75,8 @@
 		margin-top: 60px;
 		&_title{
 			text-transform: uppercase;
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 			padding-bottom: 20px;
 			margin-bottom: 20px;
 			border-bottom: 1px solid rgba(196,196,196 , .4);
@@ -82,7 +84,8 @@
 		&_price{
 			float: right;
 			text-transform: uppercase;
-			font-family: 'gilroyextrabold';
+			font-family: "Cabin", sans-serif;
+			font-weight: 800;
 		}
 	}
 	&-img{
