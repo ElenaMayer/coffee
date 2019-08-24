@@ -25,13 +25,14 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => Yii::$app->params['title'] . ' Админка',
+                'brandLabel' => Yii::$app->name . ' Админка',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             $menuItems = [
+                ['label' => 'Сайт', 'url' => 'https://'.Yii::$app->params['domain']],
                 ['label' => 'Категории', 'url' => ['/category/index']],
                 ['label' => 'Товары', 'url' => ['/product/index']],
                 ['label' => 'Заказы', 'url' => ['/order/index']]

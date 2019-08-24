@@ -16,32 +16,6 @@ $this->title = Html::encode($title);
                         <img src="/img/logo_white_lg.png" alt="logo">
                     </div>
 
-                    <!-- SOCIAL -->
-                    <div class="follow-block follow-block--vertical">
-                        <ul class="social-list -md-2 -white">
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- SOCIAL END -->
                 </div>
             </div>
 
@@ -154,9 +128,6 @@ $this->title = Html::encode($title);
                 <div class="row">
                     <div class="col-xs-12 col-sm-7">
                         <h2 class="section-title -side-stick">Контакты</h2>
-                        <div class="title-description">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducmus qui blanditiis praesentium voluptatum deleolor olestias excepturi sint occaecati cupiditate non provident,</p>
-                        </div>
                         <div class="row contact-us-content-wrap">
                             <div class="col-xss-12 col-xs-6 col-sm-12 col-md-7">
                                 <div class="contact-us-left-side">
@@ -181,69 +152,7 @@ $this->title = Html::encode($title);
                                             </li>
                                         </ul>
                                     </div>
-
-                                    <div class="contacts-item">
-                                        <h5 class="article-title">Часы работы</h5>
-                                        <ul class="contacts-list small-text">
-                                            <li>10:00 am to 11:00 pm on Weekdays</li>
-                                            <li>11:00 am to 11:00 pm on Weekends</li>
-                                        </ul>
-                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="col-xss-12 col-xs-6 col-sm-12 col-md-5">
-                                <div class="contact-us-right-side">
-                                    <h5 class="article-title">Социальные сети</h5>
-                                    <div class="follow-block contacts-item">
-                                        <ul class="social-list -md-2 -white">
-                                            <li>
-                                                <a href="javascript:void(0);" target="_blank">
-                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);" target="_blank">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);" target="_blank">
-                                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);" target="_blank">
-                                                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <h5 class="article-title">Инстаграм</h5>
-
-                                    <div class="instagram-board instagram-board--grid">
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_1.png" alt="photo">
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_2.png" alt="photo">
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_1.png" alt="photo">
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_2.png" alt="photo">
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_1.png" alt="photo">
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            <img src="img/instagram_img_2.png" alt="photo">
-                                        </a>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
