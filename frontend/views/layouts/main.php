@@ -40,8 +40,8 @@ AppAsset::register($this);
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?= Yii::$app->homeUrl ?>">
-                        <img src="/img/logo_white.png" alt="logo_white" class="logo_white">
-                        <img src="/img/logo_black.png" alt="logo_black" class="logo_black">
+                        <img src="/img/logo_white.png?2" alt="logo_white" class="logo_white">
+                        <img src="/img/logo_black.png?2" alt="logo_black" class="logo_black">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main_navbar">

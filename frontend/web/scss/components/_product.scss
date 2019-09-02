@@ -85,7 +85,7 @@
 		}
 		&_price_block{
 			text-transform: uppercase;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
 		}
 		&_price_old{
 			text-decoration: line-through;
@@ -105,9 +105,15 @@
 			font-size: 30px;
 			font-weight: 700;
 			vertical-align: middle;
+			float: left;
+			padding-right: 10px;
 			& span{
 
 			}
+		}
+		&_price_hint {
+			text-transform: none;
+			padding-top: 6px;
 		}
 		&_descr{
 			font-size: 18px;

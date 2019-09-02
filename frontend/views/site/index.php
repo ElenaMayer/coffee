@@ -13,7 +13,7 @@ $this->title = Html::encode($title);
             <div class="container">
                 <div class="content">
                     <div class="logo-center">
-                        <img src="/img/logo_white_lg.png" alt="logo">
+                        <img src="/img/logo_white_lg.png?1" alt="logo">
                     </div>
 
                 </div>
@@ -75,10 +75,18 @@ $this->title = Html::encode($title);
         <section class="our-story-section section" id="section-shipping">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 col-md-5">
+                    <div class="col-sm-8 col-md-7">
                         <article class="article-block-text">
                             <h2 class="section-title -side-stick">Доставка</h2>
-                            <p>Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.</p>
+                            <h5>Забрать самостоятельно</h5>
+                            <p>Самовывоз осуществляется по предварительной договоренности по адресу в г.Новосибирск.</p>
+                            <h5>Доставка курьером</h5>
+                            <p>Предварительно согласуем удобное время доставки.
+                                Стоимость и сроки доставки курьером зависят от адреса доставки и рассчитываются при подтверждении заказа.
+                                Бесплатная доставка по г.Новосибирску по субботам при заказе от 3000 рублей</p>
+                            <h5>Доставка транспортными компаниями</h5>
+                            <p>Доставка осуществляется ТК из г.Новосибирска.
+                                Оплата за доставку до места назначения производит покупатель согласно тарифу ТК.</p>
                         </article>
                     </div>
                     <div class="col-sm-6 col-md-4">
@@ -113,8 +121,11 @@ $this->title = Html::encode($title);
                     <div class="col-xs-12 col-sm-6 col-md-5">
                         <article class="article-block-text">
                             <h2 class="section-title -side-stick">Оплата</h2>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-                            <p>Numerous commentators have also referred to the supposed restaurant owner's eccentric habit of touting for custom.</p>
+                            <h5>Переводом на карту</h5>
+                            <p>Отправка транспортными компаниями производится только после 100% оплаты.</p>
+                            <p>Минимальная сумма заказа 500 рублей.</p>
+                            <h5>Наличный расчёт</h5>
+                            <p>При получении в пункте выдачи либо курьеру.</p>
                         </article>
                     </div>
                 </div>

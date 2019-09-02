@@ -815,6 +815,31 @@ jQuery(document).ready(function($) {
         }
         initMap();
     }
+
+    $(document.body).on('change', '#order-shipping_method' ,function(){
+        var shipping = $(this).children("option:selected").val();
+        if(shipping == 'tk'){
+            $('.shipping_methods').show();
+            $('#order-payment_method').children("option[value='cash']").remove();
+            $('.checkout-shipping_text').html('По тарифу ТК');
+        } else {
+            $('#order-payment_method').children("option[value='cash']").remove();
+            $('#order-payment_method').append($('<option>', {
+                value: 'cash',
+                text: 'Наличными при получении'
+            }));
+            if (shipping == 'self') {
+                $('.shipping_methods').hide();
+                $('.checkout-shipping_text').html('Бесплатно');
+            } else if (shipping == 'courier') {
+                $('.shipping_methods').show();
+                if (parseInt($('.checkout-total_price span').text()) > 3000)
+                    $('.checkout-shipping_text').html('Бесплатно');
+                else
+                    $('.checkout-shipping_text').html('300<i class="fa fa-ruble"></i>');
+            }
+        }
+    });
 });
 
 

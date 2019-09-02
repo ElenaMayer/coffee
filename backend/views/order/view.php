@@ -43,18 +43,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'fio',
             'phone',
             'email:email',
-//            [
-//                'attribute' => 'shipping_method',
-//                'value' => function ($model) {
-//                    return Order::getShippingMethods()[$model->shipping_method];
-//                },
-//            ],
-//            [
-//                'attribute' => 'payment_method',
-//                'value' => function ($model) {
-//                    return Order::getPaymentMethods()[$model->payment_method];
-//                },
-//            ],
+            [
+                'attribute' => 'shipping_method',
+                'value' => function ($model) {
+                    if(isset($model->shipping_method)) {
+                        return Order::getShippingMethods()[$model->shipping_method];
+                    } else
+                        return null;
+                },
+            ],
+            [
+                'attribute' => 'payment_method',
+                'value' => function ($model) {
+                    if(isset($model->payment_method)) {
+                        return Order::getPaymentMethods()[$model->payment_method];
+                    } else
+                        return null;
+                },
+            ],
+            'address',
 //            [
 //                'attribute'=>'payment',
 //                'value' => function ($model) {

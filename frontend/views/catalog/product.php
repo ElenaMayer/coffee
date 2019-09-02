@@ -45,6 +45,7 @@ $this->title = Html::encode($title);
                 </div>
                 <div class="product-inner_price_block">
                     <div class="product-inner_price_new"><?= $product->price ?><i class="fa fa-ruble"></i></div>
+                    <div class="product-inner_price_hint">Цена</div>
                 </div>
                 <div class="product-inner_descr"><?= Markdown::process($product->description) ?></div>
                 <span class="product-inner_subtitle">Категория: <a href="/catalog/<?= $product->category->slug?>"><?= $product->category->title?></a></span>

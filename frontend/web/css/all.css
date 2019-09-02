@@ -12165,10 +12165,18 @@ form.cart .button:focus {
   .-mgtp100 {
     margin-top: 0;
   }
+
+  .row {
+    margin-left: 5px;
+  }
 }
 @media screen and (max-width: 767px) {
   .-media767_hide {
     display: none !important;
+  }
+
+  .valign {
+    margin-top: -40%;
   }
 }
 .header {
@@ -12712,7 +12720,7 @@ form.cart .button:focus {
   margin-bottom: 30px;
 }
 .section-welcome .logo-center img {
-  max-width: 575px;
+  max-width: 390px;
   width: 100%;
   padding: 0 15px;
 }
@@ -12891,6 +12899,7 @@ form.cart .button:focus {
   }
   .section-title_top {
     background-attachment: inherit;
+    height: 300px;
   }
   .section-welcome {
     background-attachment: inherit;
@@ -14399,7 +14408,7 @@ form.cart .button:focus {
     width: 100%;
   }
   .menu-title_block h2 {
-    font-size: 70px;
+    font-size: 50px;
   }
   .menu-section_item.-title {
     height: auto;
@@ -16088,7 +16097,7 @@ form.cart .button:focus {
 }
 .product-inner_price_block {
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .product-inner_price_old {
   text-decoration: line-through;
@@ -16105,6 +16114,12 @@ form.cart .button:focus {
   font-size: 30px;
   font-weight: 700;
   vertical-align: middle;
+  float: left;
+  padding-right: 10px;
+}
+.product-inner_price_hint {
+  text-transform: none;
+  padding-top: 6px;
 }
 .product-inner_descr {
   font-size: 18px;
@@ -16457,7 +16472,7 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .cart-table .cart-product_quantity {
     position: absolute;
-    left: 40px;
+    left: 0;
     bottom: 10px;
   }
   .cart-table .cart-product_total-price {
@@ -16599,6 +16614,23 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 22px;
   font-family: "Cabin", sans-serif;
   font-weight: 800;
+}
+.checkout-shipping {
+  margin-top: 30px;
+  margin-bottom: 65px;
+}
+.checkout-shipping_title {
+  font-family: "Cabin", sans-serif;
+  font-weight: 800;
+  float: left;
+  text-transform: uppercase;
+}
+.checkout-shipping_text {
+  float: right;
+}
+.checkout-clear {
+  clear: both;
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 991px) {
@@ -19796,7 +19828,7 @@ body {
 }
 @media only screen and (max-width: 1199px) {
   .video-landing .section-welcome .logo-center img {
-    max-width: 450px;
+    max-width: 350px;
   }
 }
 @media screen and (max-width: 991px) {

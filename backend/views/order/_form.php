@@ -28,15 +28,11 @@ use \common\models\Order;
         <?= $form->field($model, 'zip')->textInput(['maxlength' => 6]) ?>
     </div>
 
-    <div class="shipping_method_field city_field" <?php if($model->shipping_method != 'tk'):?>style="display: none"<?php endif;?>">
-        <?= $form->field($model, 'city')->textInput(['maxlength' => 255]) ?>
-    </div>
-
-    <?= $form->field($model, 'shipping_cost')->textInput(['maxlength' => 255]) ?>
+    <?php /*$form->field($model, 'shipping_cost')->textInput(['maxlength' => 255])*/ 1?>
 
     <?= $form->field($model, 'payment_method')->dropDownList(Order::getPaymentMethods()) ?>
 
-    <?= $form->field($model, 'payment')->dropDownList([1 => 'Есть', 0 => 'Нет']) ?>
+    <?php /*$form->field($model, 'payment')->dropDownList([1 => 'Есть', 0 => 'Нет'])*/ 1 ?>
 
     <?= $form->field($model, 'notes')->textarea(['rows' => 6]) ?>
 

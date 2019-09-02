@@ -610,9 +610,15 @@ form.cart .button:focus {
 	.-mgtp100{
 		margin-top: 0;
 	}
+	.row {
+		margin-left: 5px;
+	}
 }
 @media screen and (max-width: 767px){
 	.-media767_hide{
 		display: none !important;
+	}
+	.valign {
+		margin-top: -40%;
 	}
 }

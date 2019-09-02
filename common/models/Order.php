@@ -140,8 +140,8 @@ class Order extends \yii\db\ActiveRecord
     public static function getShippingMethods()
     {
         return [
-            'self' => 'Самовывоз',
-            'rp' => 'Почта России',
+            'self' => 'Самовывоз (для Новосибирска)',
+            'courier' => 'Курьер (для Новосибирска)',
             'tk' => 'Транспортная компания',
         ];
     }

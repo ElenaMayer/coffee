@@ -1,6 +1,7 @@
 <?php
 use \yii\helpers\Html;
 use \yii\bootstrap\ActiveForm;
+use common\models\Order;
 
 /* @var $this yii\web\View */
 /* @var $products common\models\Product[] */
@@ -33,10 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="col-md-6">
                                     <?= $form->field($order, 'phone') ?>
                                 </div>
-                                <div class="col-md-12">
-                                    <?= $form->field($order, 'address') ?>
-                                </div>
                             </div>
+                            <?= $form->field($order, 'shipping_method')->dropDownList(Order::getShippingMethods()); ?>
+                            <div class="shipping_methods" style="display: none">
+                                <?= $form->field($order, 'address')->textInput(['placeholder' => 'Новосибирск, ул.Ленина д.1 кв.1', 'class' => 'form-control dark order-address']); ?>
+                            </div>
+                            <?= $form->field($order, 'payment_method')->dropDownList(Order::getPaymentMethods()); ?>
                             <?= $form->field($order, 'notes')->textarea() ?>
                         </div>
                     </div>
@@ -62,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <span class="checkout-table_product-subtitle">Арт. <?= $product->article?></span>
                                             </div>
                                         </td>
-                                        <td style="width: 35%;"><?= $quantity = $product->getQuantity()?></td>
+                                        <td class="col-sm-2 cart-product_quantity -centercart-product_quantity" style="width: 35%;"><?= $quantity = $product->getQuantity()?></td>
                                         <td style="width: 20%;" class="text-center">
                                             <span class="checkout-table_price"><?= $product->getCost() ?><span><i class="fa fa-ruble"></i></span>
                                         </td>
@@ -73,7 +76,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         </table>
                         <div class="checkout-total clearfix">
                             <h5 class="checkout-total_title">ИТОГО:</h5>
-                            <div class="checkout-total_price"><?= $total ?><i class="fa fa-ruble"></i></div>
+                            <div class="checkout-total_price"><span><?= $total ?></span><i class="fa fa-ruble"></i></div>
+                            <div class="checkout-clear"></div>
+                            <h5 class="checkout-shipping_title">ДОСТАВКА:</h5>
+                            <div class="checkout-shipping_text">Бесплатно</div>
                         </div>
                         <?= Html::submitButton('<span>Отправить заказ</span><i class="fa fa-long-arrow-right" aria-hidden="true"></i>', ['class' => 'btn btn-md btn-primary btn-ico btn-upper -mg_rt10']) ?>
                     </div>
