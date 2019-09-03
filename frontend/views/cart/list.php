@@ -25,7 +25,7 @@ $cart = \Yii::$app->cart;
                                 Наименование
                             </div>
                             <div class="col-sm-2 cart-product_price -center">
-                                Цена за 100г
+                                Цена
                             </div>
                             <div class="col-sm-2 cart-product_quantity -center">
                                 Количество
