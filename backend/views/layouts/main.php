@@ -17,6 +17,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <title><?= Html::encode($this->title) ?> Админка</title>
     <?php $this->head() ?>
 </head>

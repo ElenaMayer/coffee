@@ -11915,9 +11915,10 @@ input:focus {
 }
 
 .valign {
-  position: relative;
-  margin-top: -65%;
-  margin-bottom: 50%;
+  position: absolute;
+  margin-top: -45%;
+  left: 10px;
+  width: 90%;
 }
 
 div.quantity {
@@ -15613,7 +15614,8 @@ form.cart .button:focus {
   font-weight: 700;
   text-align: left;
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 18px;
+  min-height: 44px;
 }
 .shop-descr {
   font-size: 17px;

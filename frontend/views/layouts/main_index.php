@@ -12,17 +12,17 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/img/favicons/manifest.json">
-    <link rel="mask-icon" hasdref="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon.png?1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png?1">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png?1">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ffffff">
     <meta name = "format-detection" content = "telephone=no">
+    <meta name="description" contant="<?=Yii::$app->params['title']?>">
 
     <meta charset="<?= Yii::$app->charset ?>"/>
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title . ' - ' . Yii::$app->name ) ?></title>
+    <title><?= Html::encode(Yii::$app->name ) ?></title>
     <?php $this->head() ?>
 </head>
 <?php $this->beginBody() ?>
@@ -49,10 +49,6 @@ AppAsset::register($this);
             <div class="header-top-line-wrap">
                 <?php $itemsInCart = Yii::$app->cart->getCount(); ?>
                 <div class="right-side-top-line">
-                    <a href="/cart" class="cart-price">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="cart-products"><?= $itemsInCart ?></span>
-                    </a>
                     <!-- mobile menu button -->
                     <div class="navbar-header navbar-header--on-white">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_navbar" aria-expanded="false">
@@ -84,7 +80,7 @@ AppAsset::register($this);
                             </a>
                         </li>
                         <li>
-                            <a href="#section-shop">
+                            <a href="/catalog/coffee">
                                 <svg version="1.1" class="ico-square" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 9.2 9.2" enable-background="new 0 0 9.2 9.2" xml:space="preserve">
 									<path fill="#FFD03B" d="M5.8,8.7C5.5,9,5,9.2,4.6,9.2S3.7,9,3.4,8.7L0.5,5.8c-0.7-0.7-0.7-1.7,0-2.4l2.9-2.9c0.7-0.7,1.7-0.7,2.4,0
@@ -142,6 +138,13 @@ AppAsset::register($this);
 									<path fill="#FFD03B" d="M5.8,8.7C5.5,9,5,9.2,4.6,9.2S3.7,9,3.4,8.7L0.5,5.8c-0.7-0.7-0.7-1.7,0-2.4l2.9-2.9c0.7-0.7,1.7-0.7,2.4,0
 										l2.9,2.9c0.7,0.7,0.7,1.7,0,2.4L5.8,8.7z"/>
 									</svg>
+                            </a>
+                        </li>
+                        <li>
+                            <?php $itemsInCart = Yii::$app->cart->getCount(); ?>
+                            <a href="/cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="cart-products"><?= $itemsInCart ?></span>
                             </a>
                         </li>
                     </ul>

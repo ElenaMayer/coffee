@@ -16,22 +16,8 @@ use common\models\ProductDiversity;
     <?php if($order->shipping_method):?>
         <li><b>Доставка:</b> <?= Order::getShippingMethods()[$order->shipping_method]; ?></li>
     <?php endif;?>
-    <?php if($order->shipping_method == 'tk' && $order->tk):?>
-        <?php if($order->city):?>
-            <li><b>Город:</b> <?= $order->city ?></li>
-        <?php endif;?>
-        <li><b>ТК:</b> <?= Order::getTkList()[$order->tk]; ?></li>
-    <?php endif;?>
-    <?php if($order->shipping_method == 'rcr' && $order->rcr):?>
-        <li><b>РЦР:</b> <?= $order->rcr?></li>
-    <?php endif;?>
-    <?php if($order->shipping_method == 'rp' || $order->shipping_method == 'courier'):?>
-        <?php if($order->zip):?>
-            <li><b>Индекс:</b> <?= $order->zip ?></li>
-        <?php endif;?>
-        <?php if($order->address):?>
-            <li><b>Адрес:</b> <?= $order->address ?></li>
-        <?php endif;?>
+    <?php if($order->address):?>
+        <li><b>Адрес:</b> <?= $order->address ?></li>
     <?php endif;?>
     <?php if($order->payment_method):?>
         <li><b>Оплата:</b> <?= Order::getPaymentMethods()[$order->payment_method]; ?></li>

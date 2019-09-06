@@ -14,17 +14,16 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/img/favicons/manifest.json">
-    <link rel="mask-icon" hasdref="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon.png?1">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png?1">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png?1">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ffffff">
     <meta name = "format-detection" content = "telephone=no">
 
     <meta charset="<?= Yii::$app->charset ?>"/>
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title . ' - ' . Yii::$app->name ) ?></title>
+    <title><?= Html::encode($this->title . ' - ' . Yii::$app->params['domain'] ) ?></title>
     <?php $this->head() ?>
 </head>
     <?php $this->beginBody() ?>

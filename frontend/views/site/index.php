@@ -2,7 +2,7 @@
 use common\models\Product;
 use yii\helpers\Html;
 
-$title = Yii::$app->params['title'];
+$title = Yii::$app->name;
 $this->title = Html::encode($title);
 ?>
 
@@ -34,7 +34,7 @@ $this->title = Html::encode($title);
             <div class="container">
                 <h2 class="section-title -side-stick">Каталог</h2>
                 <div class="title-description">
-                    <p>Мы предлогаем лучшие сорта кофе и чая со всего мира</p>
+                    <p>Мы предлагаем лучшие сорта свежеобжаренного кофе и чая со всего мира</p>
                 </div>
                 <div class="row our-shop-items-wrap">
                     <?php foreach (Product::getNovelties(4) as $product):?>

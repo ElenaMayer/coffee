@@ -836,7 +836,7 @@ jQuery(document).ready(function($) {
                 if (parseInt($('.checkout-total_price span').text()) > 3000)
                     $('.checkout-shipping_text').html('Бесплатно');
                 else
-                    $('.checkout-shipping_text').html('300<i class="fa fa-ruble"></i>');
+                    $('.checkout-shipping_text').html('<p>От 100<i class="fa fa-ruble"></i> в зависимости от района</p>');
             }
         }
     });

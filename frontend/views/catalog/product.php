@@ -6,6 +6,10 @@ use common\models\Product;
 $title = $product->title;
 $this->params['breadcrumbs'][] = ['label' => $category->title, 'url' => ['/catalog/' . $category->slug]];
 $this->params['breadcrumbs'][] = $title;
+\Yii::$app->view->registerMetaTag([
+    'name' => 'description',
+    'content' => $product->description
+]);
 $this->title = Html::encode($title);
 ?>
 

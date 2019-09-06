@@ -376,9 +376,10 @@ input{
 	letter-spacing: 0.05em;
 }
 .valign {
-	position: relative;
-	margin-top: -65%;
-	margin-bottom: 50%;
+	position: absolute;
+	margin-top: -45%;
+	left: 10px;
+	width: 90%;
 }
 div.quantity {
 	float: left;
