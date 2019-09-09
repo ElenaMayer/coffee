@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use yii\widgets\Breadcrumbs;
 use common\models\Category;
+use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -96,11 +97,12 @@ AppAsset::register($this);
             <div class="container-fluid">
                 <div class="menu-title_block">
                     <h2><?=$this->title?></h2>
-                    <p>Лучшее кофе со всего мира</p>
+                    <p>Лучший кофе со всего мира</p>
                 </div>
             </div>
         </section>
         <div class="container">
+            <?= Alert::widget() ?>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <?= Breadcrumbs::widget([

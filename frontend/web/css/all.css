@@ -11916,7 +11916,7 @@ input:focus {
 
 .valign {
   position: absolute;
-  margin-top: -45%;
+  margin-top: -50%;
   left: 10px;
   width: 90%;
 }
@@ -15578,7 +15578,7 @@ form.cart .button:focus {
 }
 .shop-item.-center {
   text-align: center;
-  padding: 55px 40px;
+  padding: 33px;
   margin: 0 20px;
 }
 .shop-item.-center .shop-price {
@@ -15603,7 +15603,6 @@ form.cart .button:focus {
 .shop-img {
   display: inline-block;
   margin-bottom: 20px;
-  padding: 0 20px;
 }
 .shop-img img {
   max-height: 140px;
@@ -15615,7 +15614,7 @@ form.cart .button:focus {
   text-align: left;
   margin-bottom: 5px;
   font-size: 18px;
-  min-height: 44px;
+  min-height: 57px;
 }
 .shop-descr {
   font-size: 17px;

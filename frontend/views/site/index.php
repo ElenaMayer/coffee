@@ -1,6 +1,9 @@
 <?php
 use common\models\Product;
 use yii\helpers\Html;
+use frontend\assets\IndexAsset;
+
+IndexAsset::register($this);
 
 $title = Yii::$app->name;
 $this->title = Html::encode($title);
@@ -146,10 +149,6 @@ $this->title = Html::encode($title);
                                         <h5 class="article-title">Адрес</h5>
                                         <ul class="contacts-list contacts-list--address">
                                             <li>
-                                                <i class="fa fa-home" aria-hidden="true"></i>
-                                                <span class="social-descr"><?= Yii::$app->params['address'] ?></span>
-                                            </li>
-                                            <li>
                                                 <a href="tel:<?= Yii::$app->params['phone'] ?>">
                                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                                     <span class="social-descr"><?= Yii::$app->params['phone'] ?></span>
@@ -160,6 +159,10 @@ $this->title = Html::encode($title);
                                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                                     <span class="social-descr"><?= Yii::$app->params['email'] ?></span>
                                                 </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-home" aria-hidden="true"></i>
+                                                <span class="social-descr"><?= Yii::$app->params['address'] ?></span>
                                             </li>
                                         </ul>
                                     </div>

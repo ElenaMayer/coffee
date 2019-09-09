@@ -24,7 +24,9 @@
         "yiisoft/yii2-imagine": "^2.1",
         "kartik-v/yii2-widget-select2": "@dev",
         "amilna/yii2-elevatezoom": "*",
-        "kartik-v/yii2-widget-depdrop": "@dev"
+        "kartik-v/yii2-widget-depdrop": "@dev",
+        "google/apiclient": "^2.0",
+        "google/apiclient-services": "^0.113.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -785,7 +785,7 @@ jQuery(document).ready(function($) {
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('blackAndWhiteMap'), {
-                center: {lat: 40.710683, lng: -74.007180},
+                center: {lat: 55.052722, lng: 82.895599},
                 zoom: 12,
                 zoomControl: false,
                 disableDefaultUI: true,
@@ -795,14 +795,14 @@ jQuery(document).ready(function($) {
                 styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
             });
             var icon = {
-                url: "../img/map_marker.png",
+                url: "../img/map_marker.png?1",
                 anchor: new google.maps.Point(25,50),
                 scaledSize: new google.maps.Size(60,60)
             }
             var marker = new google.maps.Marker({
-                position: {lat: 40.710683, lng: -74.007180},
+                position: {lat: 55.074233, lng: 82.890723},
                 map: map,
-                title: 'Tattoo studio Ink Tattoo',
+                title: 'Coffee',
                 animation: google.maps.Animation.BOUNCE,
                 icon: icon,
             });

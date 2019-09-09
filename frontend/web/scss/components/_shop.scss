@@ -37,7 +37,7 @@
 		}
 		&.-center{
 			text-align: center;
-			padding: 55px 40px;
+			padding: 33px;
 			margin: 0 20px;
 			& .shop{
 				&-price{
@@ -71,7 +71,6 @@
 		// max-width: 150px;
 		display: inline-block;
 		margin-bottom: 20px;
-		padding: 0 20px;
 		& img {
 			max-height: 140px;
 			width: auto;
@@ -83,7 +82,7 @@
 		text-align: left;
 		margin-bottom: 5px;
 		font-size: 18px;
-		min-height: 44px;
+		min-height: 57px;
 	}
 	&-descr{
 		font-size: 17px;
