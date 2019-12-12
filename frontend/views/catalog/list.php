@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="shop-filter_title">Категории</div>
                         <div class="filter-list">
                             <?php foreach (Category::find()->all() as $cat):?>
-                                <a href="/catalog/<?=$cat->slug?>" class="filter-list_main_link <?php if($cat->id == $category->id):?>active<?php endif;?>" data-toggle="collapse"><?=$cat->title?> (<?= count($cat->products) ?>) <i class="fa fa-angle-right"></i></a>
+                                <a href="/catalog/<?=$cat->slug?>" class="filter-list_main_link <?php if($cat->id == $category->id):?>active<?php endif;?>"><?=$cat->title?> (<?= count($cat->products) ?>) <i class="fa fa-angle-right"></i></a>
                             <?php endforeach;?>
                         </div>
                     </div>

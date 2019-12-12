@@ -146,6 +146,14 @@ $this->title = Html::encode($title);
                             <div class="col-xss-12 col-xs-6 col-sm-12 col-md-7">
                                 <div class="contact-us-left-side">
                                     <div class="contacts-item">
+                                        <ul class="contacts-list contacts-list--address">
+                                            <li>
+                                                <a href="<?= Yii::$app->params['instagram'] ?>" target="_blank">
+                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                    <span class="social-descr">Мы в Instagram</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                         <h5 class="article-title">Адрес</h5>
                                         <ul class="contacts-list contacts-list--address">
                                             <li>
