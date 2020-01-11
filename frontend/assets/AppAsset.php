@@ -15,10 +15,15 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
+    public $jsOptions = [
+        'position' => \yii\web\View::POS_END,
+        'async' => true,
+        'defer' => true
+    ];
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/all.css?39',
+        'css/all.css?40',
     ];
     public $js = [
         'js/jquery.min.js',

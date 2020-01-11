@@ -50,7 +50,7 @@ $this->title = Html::encode($title);
                                     <img src="<?=$images[0]->getUrl('medium')?>" alt="<?= $product->title?>">
                                 </a>
                                 <a href="/catalog/<?= $product->category->slug?>/<?= $product->id?>" class="tabMenu-content-title"><?= $product->title?></a>
-                                <p><a href="/catalog/<?= $product->category->slug?>/"><?= $product->category->title?></a></p>
+                                <p><a href="/catalog/<?= $product->category->slug?>"><?= $product->category->title?></a></p>
                                 <div class="our-shop-price-block">
                                     <p class="our-shop-price"><?= $product->price?><i class="fa fa-ruble"></i></p>
                                     <div class="cd-customization">
