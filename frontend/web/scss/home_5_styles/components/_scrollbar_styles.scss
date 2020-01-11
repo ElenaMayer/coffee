@@ -17,7 +17,7 @@ $main: #000;
 ::-webkit-scrollbar-thumb {
 	border-radius: 2px; // Закругление бегунка
 	background-color: $brand-primary; // Цвет бегунка
-	background-image: url("../img/icon_for_scroll.png");
+	background-image: url(../img/icon_for_scroll.png);
 	background-position: center;
 	background-repeat: no-repeat;
 }

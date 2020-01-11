@@ -19513,7 +19513,7 @@ input[type=number]::-webkit-outer-spin-button {
 ::-webkit-scrollbar-thumb {
   border-radius: 2px;
   background-color: #ffcf3b;
-  background-image: url("../img/icon_for_scroll.png");
+  background-image: url(../img/icon_for_scroll.png);
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -19617,7 +19617,7 @@ body {
 
 @media (max-width: 767px) {
   .fullscreen-bg {
-    background: url("../img/video_screenshot.jpg") center center/cover no-repeat;
+    background: url(../img/video_screenshot.jpg) center center/cover no-repeat;
   }
 
   .fullscreen-bg__video {

@@ -18,8 +18,7 @@ class IndexAsset extends AssetBundle
         'js/rellax.min.js',
         'js/slick-lightbox.min.js',
         'js/slidebars.min.js',
-        'http://maps.googleapis.com/maps/api/js?key=AIzaSyAEJgte17bKvMyyWXo1JcWbzsl9Qy-3-uo',
-
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyAEJgte17bKvMyyWXo1JcWbzsl9Qy-3-uo',
     ];
     public $depends = [
         'frontend\assets\AppAsset',
